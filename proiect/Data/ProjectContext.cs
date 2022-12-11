@@ -6,9 +6,9 @@ namespace proiect.Data
     public class ProjectContext : DbContext
     {
         public DbSet<Adress> Adress { get; set; }   
-        public DbSet<Customer> Customer { get; set; }
-        public DbSet<Order> Order { get; set; }
-        public DbSet<Item> Item { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Item> Items { get; set; }
 
         public ProjectContext(DbContextOptions<ProjectContext> options) : base(options)
         {
@@ -17,10 +17,10 @@ namespace proiect.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>()
+            modelBuilder.Entity<User>()
                         .HasOne<Adress>(x => x.Adress)
-                        .WithOne(x => x.Customer);
-            modelBuilder.Entity<Customer>()
+                        .WithOne(x => x.User);
+            modelBuilder.Entity<User>()
                         .HasMany<Order>(x => x.Orders)
                         .WithOne(x => x.Customer);
             modelBuilder.Entity<Order>()

@@ -53,6 +53,7 @@ namespace proiect.Repositories.GenericRepository
             _table.Update(entity);
         }
 
+
         public void UpdateRange(IEnumerable<TEntity> entites)
         {
             _table.UpdateRange(entites);
