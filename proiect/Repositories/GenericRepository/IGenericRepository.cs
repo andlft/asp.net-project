@@ -26,7 +26,7 @@ namespace proiect.Repositories.GenericRepository
         //Delete
 
         void Delete(TEntity entity);
-        void DeleteRange(IEnumerable<TEntity> entities);    
+        void DeleteRange(IEnumerable<TEntity> entities);  
 
         //Find
 
