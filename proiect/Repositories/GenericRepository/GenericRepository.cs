@@ -27,14 +27,16 @@ namespace proiect.Repositories.GenericRepository
         }
 
         //Create
-        public void Create(TEntity entity)
+        public Guid Create(TEntity entity)
         {
             _table.Add(entity);
+            return entity.Id;
         }
 
-        public async Task CreateAsync(TEntity entity)
+        public async Task<Guid> CreateAsync(TEntity entity)
         {
             await _table.AddAsync(entity);
+            return entity.Id;
         }
 
         public void CreateRange(IEnumerable<TEntity> entities)

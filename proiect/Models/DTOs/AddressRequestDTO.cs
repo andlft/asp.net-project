@@ -2,7 +2,7 @@
 
 namespace proiect.Models.DTOs
 {
-    public class AdressRequestDTO
+    public class AddressRequestDTO
     {
         [Required]
         public string CountyName { get; set; }

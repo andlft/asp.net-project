@@ -8,8 +8,8 @@ namespace proiect.Models.BaseEntity
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }    
-        public DateTime? DateCreated { get; set; }  
+        public Guid Id { get; set; }
+        public DateTime DateCreated { get; set; } 
         public DateTime? DateModified { get; set; }
     }
 }

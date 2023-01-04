@@ -11,8 +11,8 @@ namespace proiect.Repositories.GenericRepository
 
         //Create
 
-        void Create(TEntity entity);
-        Task CreateAsync(TEntity entity);
+        Guid Create(TEntity entity);
+        Task<Guid> CreateAsync(TEntity entity);
 
         void CreateRange(IEnumerable<TEntity> entities);
 

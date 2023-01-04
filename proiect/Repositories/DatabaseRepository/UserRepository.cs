@@ -21,9 +21,14 @@ namespace proiect.Repositories.DatabaseRepository
             return _table.Where(x => x.RoleName == Models.Enums.Roles.Admin).ToList();
         }
 
+        public User GetUserWithInclude(Guid id)
+        {
+            return _table.Include(x => x.Address).FirstOrDefault(x => x.Id == id);
+        }
+
         public List<User> GetAllWithInclude()
         {
-            return _table.Include(x => x.Adress).Include(x => x.Orders).ToList();
+            return _table.Include(x => x.Address).Include(x => x.Orders).ToList();
         }
 
         public IEnumerable<User> GetEmployees()

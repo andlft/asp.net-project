@@ -5,10 +5,11 @@ namespace proiect.Services.UserService
 {
     public interface IUserService
     {
-        Task CreateUser(User newUser);
-        Task DeleteUser(Guid UserId);
+        Task<Guid> CreateUser(User newUser);
+        Task<bool> DeleteUser(Guid UserId);
         Task<bool> UpdateUser(Guid UserId, UserRequestDTO Request);
         Task<User> GetUserById(Guid UserId);
+        IEnumerable<User> GetEmployees();
 
     }
 }

@@ -5,7 +5,7 @@ namespace proiect.Data
 {
     public class ProjectContext : DbContext
     {
-        public DbSet<Adress> Adress { get; set; }   
+        public DbSet<Address> Address { get; set; }   
         public DbSet<User> Users { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Item> Items { get; set; }
@@ -18,7 +18,7 @@ namespace proiect.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
-                        .HasOne<Adress>(x => x.Adress)
+                        .HasOne<Address>(x => x.Address)
                         .WithOne(x => x.User);
             modelBuilder.Entity<User>()
                         .HasMany<Order>(x => x.Orders)

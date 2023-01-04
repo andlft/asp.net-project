@@ -1,6 +1,7 @@
 ﻿using proiect.Models;
 using proiect.Models.DTOs;
 using proiect.Repositories.DatabaseRepository;
+using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace proiect.Services.UserService
 {
@@ -13,22 +14,34 @@ namespace proiect.Services.UserService
             _userRepository = userRepository;
         }
 
-        public async Task CreateUser(User newUser)
+        public async Task<Guid> CreateUser(User newUser)
         {
-            await _userRepository.CreateAsync(newUser);
+            Guid Id;
+            Id = await _userRepository.CreateAsync(newUser);
             await _userRepository.SaveAsync();
-        }
+            return Id;
+         }
 
-        public async Task DeleteUser(Guid UserId)
+        public async Task<bool> DeleteUser(Guid UserId)
         {
             var user = await _userRepository.FindByIdAsync(UserId);
+            if (user == null)
+            {
+                return false;
+            }
             _userRepository.Delete(user);
             await _userRepository.SaveAsync();
+            return true;
+        }
+
+        public IEnumerable<User> GetEmployees()
+        {
+            return _userRepository.GetEmployees();
         }
 
         public async Task<User> GetUserById(Guid UserId)
         {
-            return await _userRepository.FindByIdAsync(UserId);
+            return _userRepository.GetUserWithInclude(UserId);
         }
 
         public async Task<bool> UpdateUser(Guid UserId, UserRequestDTO Request)
@@ -42,7 +55,8 @@ namespace proiect.Services.UserService
             user.LastName = Request.LastName;
             user.PhoneNumber = Request.PhoneNumber;
             user.Email = Request.Email;
-            user.PasswordHash = Request.PasswordHash;
+            user.PasswordHash = BCryptNet.HashPassword(Request.Password);
+            await _userRepository.SaveAsync();
             return true;
         }
     }

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using proiect.Data;
 using proiect.Repositories.DatabaseRepository;
-using proiect.Services.AdressService;
+using proiect.Services.AddressService;
 using proiect.Services.ItemService;
 using proiect.Services.UserService;
 
@@ -16,13 +16,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Repositories
-builder.Services.AddTransient<IAdressRepository, AdressRepository>();
+builder.Services.AddTransient<IAddressRepository, AddressRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 builder.Services.AddTransient<IItemRepository, ItemRepository>();
 
 //Services
-builder.Services.AddTransient<IAdressService, AdressService>();
+builder.Services.AddTransient<IAddressService, AddressService>();
 builder.Services.AddTransient<IItemService, ItemService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
