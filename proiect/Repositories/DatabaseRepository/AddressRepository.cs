@@ -4,9 +4,9 @@ using proiect.Repositories.GenericRepository;
 
 namespace proiect.Repositories.DatabaseRepository
 {
-    public class AdressRepository : GenericRepository<Adress>, IAdressRepository
+    public class AddressRepository : GenericRepository<Address>, IAddressRepository
     {
-        public AdressRepository(ProjectContext context) : base(context)
+        public AddressRepository(ProjectContext context) : base(context)
         {
         }
 

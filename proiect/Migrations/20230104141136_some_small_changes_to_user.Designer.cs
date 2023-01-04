@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using proiect.Data;
 
@@ -11,9 +12,11 @@ using proiect.Data;
 namespace proiect.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    partial class ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20230104141136_some_small_changes_to_user")]
+    partial class somesmallchangestouser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,7 +76,7 @@ namespace proiect.Migrations
                     b.Property<int>("StreetNo")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ZipCode")
@@ -83,7 +86,8 @@ namespace proiect.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("UserId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Address");
                 });
@@ -214,9 +218,7 @@ namespace proiect.Migrations
                 {
                     b.HasOne("proiect.Models.User", "User")
                         .WithOne("Address")
-                        .HasForeignKey("proiect.Models.Address", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("proiect.Models.Address", "UserId");
 
                     b.Navigation("User");
                 });

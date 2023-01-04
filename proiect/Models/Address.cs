@@ -1,6 +1,6 @@
 ﻿namespace proiect.Models
 {
-    public class Adress: BaseEntity.BaseEntity
+    public class Address: BaseEntity.BaseEntity
     {
         public string CountyName { get; set; }
         public string CityName { get; set; }
@@ -12,7 +12,7 @@
         public string? FlatNo { get; set; }
 
         public Guid UserId { get; set; }    
-        public User User { get; set; }
+        public User? User { get; set; }
 
     }
 }
