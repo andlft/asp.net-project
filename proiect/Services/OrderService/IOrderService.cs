@@ -6,6 +6,8 @@ namespace proiect.Services.OrderService
     {
         Task CreateOrder(Order newOrder);
         Task DeleteOrder(Guid OrderId);
+        Task UpdateOrder(Order newOrder);
         Task<Order> GetOrderById(Guid OrderId);
+        List<Order> GetAllFromUser(Guid UserId);
     }
 }

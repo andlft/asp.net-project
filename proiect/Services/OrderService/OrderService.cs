@@ -25,9 +25,22 @@ namespace proiect.Services.OrderService
             await _orderRepository.SaveAsync();
         }
 
+        
+
         public async Task<Order> GetOrderById(Guid OrderId)
         {
             return await _orderRepository.FindByIdAsync(OrderId);
+        }
+
+        public async Task UpdateOrder(Order updateOrder)
+        {
+            _orderRepository.Update(updateOrder);
+            await _orderRepository.SaveAsync();
+        }
+
+        public List<Order> GetAllFromUser(Guid UserId)
+        {
+            return _orderRepository.GetAllFromUser(UserId);
         }
     }
 }

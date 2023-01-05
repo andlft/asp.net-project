@@ -7,7 +7,7 @@
         public int Price { get; set; }
         public string Manufacturer { get; set;}
 
-        public ICollection<Order> Orders { get; set; }
+        public List<OrderItem>? OrderItems { get; set; }
 
     }
 }

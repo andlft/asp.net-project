@@ -9,7 +9,7 @@ using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace proiect.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : ControllerBase
     {

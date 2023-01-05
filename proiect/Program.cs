@@ -3,6 +3,7 @@ using proiect.Data;
 using proiect.Repositories.DatabaseRepository;
 using proiect.Services.AddressService;
 using proiect.Services.ItemService;
+using proiect.Services.OrderService;
 using proiect.Services.UserService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,7 +26,7 @@ builder.Services.AddTransient<IItemRepository, ItemRepository>();
 builder.Services.AddTransient<IAddressService, AddressService>();
 builder.Services.AddTransient<IItemService, ItemService>();
 builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+builder.Services.AddTransient<IOrderService, OrderService>();
 
 var app = builder.Build();
 

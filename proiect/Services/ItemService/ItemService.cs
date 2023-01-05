@@ -42,6 +42,8 @@ namespace proiect.Services.ItemService
             item.Price = Request.Price;
             item.Manufacturer = Request.Manufacturer;
             item.DateModified = DateTime.UtcNow;
+            _itemRepository.Update(item);
+            await _itemRepository.SaveAsync();
             return true;
         }
     }

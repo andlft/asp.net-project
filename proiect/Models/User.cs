@@ -12,7 +12,7 @@ namespace proiect.Models
         public Roles RoleName   { get; set; }
 
         public Address? Address{ get; set; }
-        public ICollection<Order>? Orders { get; set; }
+        public List<Order>? Orders { get; set; }
 
     }
 }

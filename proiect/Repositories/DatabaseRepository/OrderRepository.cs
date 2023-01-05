@@ -11,14 +11,14 @@ namespace proiect.Repositories.DatabaseRepository
         {
         }
 
-        public List<Order> GetAllInTimeIntervalWithInclude(DateTime Begin, DateTime End)
+        public List<Order> GetAllFromUser(Guid UserId)
         {
-            return _table.Include(x => x.Items).Where(x => x.DateCreated > Begin && x.DateCreated < End).ToList();
+            return _table.Include(x => x.OrderItems).Where(x => x.Customer.Id == UserId).ToList();
         }
 
         public List<Order> GetAllWithInclude()
         {
-            return _table.Include(x => x.Items).ToList();
+            return _table.Include(x => x.OrderItems).ToList();
         }
     }
 }
