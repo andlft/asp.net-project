@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using proiect.Helpers;
 using proiect.Models;
 using proiect.Models.DTOs;
 using proiect.Models.Enums;
@@ -50,7 +51,7 @@ namespace proiect.Controllers
             Guid userId = await _userService.CreateUser(userToCreate);
             return Ok(userId);
         }
-
+        [AuthorizationAttribute(Roles.Admin)]
         [HttpPost("createEmployee")]
         public async Task<ActionResult<Guid>> CreateEmployee(UserRequestDTO Employee)
         {
@@ -79,7 +80,7 @@ namespace proiect.Controllers
             Guid userId = await _userService.CreateUser(userToCreate);
             return Ok(userId);
         }
-
+        [AuthorizationAttribute(Roles.Admin)]
         [HttpPost("CreateAdmin")]
         public async Task<ActionResult<Guid>> CreateAdmin(UserRequestDTO Admin)
         {
@@ -108,6 +109,7 @@ namespace proiect.Controllers
             Guid userId = await _userService.CreateUser(userToCreate);
             return Ok(userId);
         }
+        [AuthorizationAttribute(Roles.Employee, Roles.Admin)]
         [HttpGet("GetUserInfo/{id}")]
         public ActionResult<UserResponseDTO> GetUserInfo(Guid id)
         {
@@ -129,12 +131,13 @@ namespace proiect.Controllers
             };
             return Ok(response);
         }
+        [AuthorizationAttribute(Roles.Admin)]
         [HttpGet("GetEmployees")]
         public ActionResult<IEnumerable<User>> GetEmployees()
         {
             return Ok(_userService.GetEmployees());
         }
-
+        [Authorization(Roles.Employee, Roles.Admin)]
         [HttpPut("updateUserInfo/{id}")]
         public async Task<ActionResult> UpdateUser(Guid id, [FromBody]UserRequestDTO user)
         {
@@ -148,7 +151,7 @@ namespace proiect.Controllers
                 return BadRequest();
             }
         }
-
+        [AuthorizationAttribute(Roles.Admin)]
         [HttpDelete("deleteUser/{id}")]
         public async Task<ActionResult> DeleteUser(Guid id)
         {

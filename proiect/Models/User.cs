@@ -1,4 +1,5 @@
 ﻿using proiect.Models.Enums;
+using System.Text.Json.Serialization;
 
 namespace proiect.Models
 {
@@ -8,6 +9,7 @@ namespace proiect.Models
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+        [JsonIgnore]
         public string PasswordHash { get; set; }
         public Roles RoleName   { get; set; }
 

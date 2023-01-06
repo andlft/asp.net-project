@@ -1,4 +1,5 @@
-﻿using proiect.Models;
+﻿using proiect.Helpers.JwtUtils;
+using proiect.Models;
 using proiect.Models.DTOs;
 using proiect.Repositories.DatabaseRepository;
 using BCryptNet = BCrypt.Net.BCrypt;
@@ -8,10 +9,24 @@ namespace proiect.Services.UserService
     public class UserService : IUserService
     {
         public IUserRepository _userRepository;
+        public IJwtUtils _jwtUtils;
 
-        public UserService (IUserRepository userRepository)
+        public UserService (IUserRepository userRepository, IJwtUtils jwtUtils)
         {
             _userRepository = userRepository;
+            _jwtUtils = jwtUtils;
+        }
+
+        public UserAuthResDTO Authentificate(UserAuthReqDTO user)
+        {
+            var foundUser = _userRepository.FindByEmail(user.Email);
+            if (foundUser == null || !BCryptNet.Verify(user.Password, foundUser.PasswordHash))
+            {
+                return null;
+            }
+
+            var jwtToken = _jwtUtils.GenerateJwtToken(foundUser);
+            return new UserAuthResDTO(foundUser, jwtToken);
         }
 
         public async Task<Guid> CreateUser(User newUser)

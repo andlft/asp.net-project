@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using proiect.Data;
 
@@ -11,9 +12,11 @@ using proiect.Data;
 namespace proiect.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    partial class ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20230106133307_changed_OrderItem_PK")]
+    partial class changedOrderItemPK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,7 +73,7 @@ namespace proiect.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Address", (string)null);
+                    b.ToTable("Address");
                 });
 
             modelBuilder.Entity("proiect.Models.Item", b =>
@@ -102,7 +105,7 @@ namespace proiect.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Items", (string)null);
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("proiect.Models.Order", b =>
@@ -133,7 +136,7 @@ namespace proiect.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("proiect.Models.OrderItem", b =>
@@ -160,7 +163,7 @@ namespace proiect.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("orderItems", (string)null);
+                    b.ToTable("orderItems");
                 });
 
             modelBuilder.Entity("proiect.Models.User", b =>
@@ -200,7 +203,7 @@ namespace proiect.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("proiect.Models.Address", b =>

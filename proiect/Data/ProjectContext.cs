@@ -27,17 +27,13 @@ namespace proiect.Data
                         .HasMany<Order>(x => x.Orders)
                         .WithOne(x => x.Customer);
             //Many to many
-            modelBuilder.Entity<OrderItem>()
-                .HasKey(x => new{ x.OrderId, x.ItemId});
 
             modelBuilder.Entity<OrderItem>()
                 .HasOne<Order>(x => x.order)
-                .WithMany(x => x.OrderItems)
-                .HasForeignKey(x => x.OrderId);
+                .WithMany(x => x.OrderItems);
             modelBuilder.Entity<OrderItem>()
                 .HasOne(x => x.item)
-                .WithMany(x => x.OrderItems)
-                .HasForeignKey(x => x.ItemId);
+                .WithMany(x => x.OrderItems);
                         
             base.OnModelCreating(modelBuilder);
         }

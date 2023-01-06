@@ -10,6 +10,7 @@ namespace proiect.Services.UserService
         Task<bool> UpdateUser(Guid UserId, UserRequestDTO Request);
         Task<User> GetUserById(Guid UserId);
         IEnumerable<User> GetEmployees();
+        UserAuthResDTO Authentificate(UserAuthReqDTO user);
 
     }
 }
