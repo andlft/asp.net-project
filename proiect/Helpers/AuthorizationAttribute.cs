@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using proiect.Models;
 using proiect.Models.Enums;
+using System.Collections.Specialized;
 
 namespace proiect.Helpers
 {
@@ -25,8 +26,9 @@ namespace proiect.Helpers
 
             var user = (User)context.HttpContext.Items["User"];
 
-            if (user == null || ! _roles.Contains(user.RoleName))
+            if (user == null || !_roles.Contains(user.RoleName))
             {
+                Console.WriteLine(_roles.ToString());
                 context.Result = unauthorizedStatusObject;
             }
         }

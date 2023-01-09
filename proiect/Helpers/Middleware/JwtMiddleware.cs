@@ -18,7 +18,7 @@ namespace proiect.Helpers.Middleware
             var userId = jwtUtils.ValidateJwtToken(token);
             if(userId != Guid.Empty)
             {
-                httpContext.Items["User"] = userService.GetUserById(userId);
+                httpContext.Items["User"] = await userService.GetUserById(userId);
             }
             await _nextRequestDelegate(httpContext);
         }

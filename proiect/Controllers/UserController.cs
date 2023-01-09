@@ -23,35 +23,8 @@ namespace proiect.Controllers
             _addressService = addressService;
         }
 
-        [HttpPost("createCustomer")]
-        public async Task<ActionResult<Guid>> CreateCustomer(UserRequestDTO Customer)
-        {
-            var userToCreate = new User
-            {
-                FirstName = Customer.FirstName,
-                LastName = Customer.LastName,
-                PhoneNumber = Customer.PhoneNumber,
-                Email = Customer.Email,
-                PasswordHash = BCryptNet.HashPassword(Customer.Password),
-                RoleName = Roles.Customer,
-                Address = new Address
-                {
-                    CountyName = Customer.Address.CountyName,
-                    CityName = Customer.Address.CityName,
-                    StreetName = Customer.Address.StreetName,
-                    StreetNo = Customer.Address.StreetNo,
-                    ZipCode = Customer.Address.ZipCode,
-                    BuildingName = Customer.Address.BuildingName,
-                    Floor = Customer.Address.Floor,
-                    FlatNo = Customer.Address.FlatNo,
-                    DateCreated = DateTime.Now
-                },
-                DateCreated = DateTime.Now
-        };
-            Guid userId = await _userService.CreateUser(userToCreate);
-            return Ok(userId);
-        }
-        [AuthorizationAttribute(Roles.Admin)]
+
+            [AuthorizationAttribute(Roles.Admin)]
         [HttpPost("createEmployee")]
         public async Task<ActionResult<Guid>> CreateEmployee(UserRequestDTO Employee)
         {

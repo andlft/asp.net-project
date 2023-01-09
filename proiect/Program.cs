@@ -40,7 +40,7 @@ builder.Services.AddTransient<AdminSeeder>();
 
 //Auth
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
-builder.Services.AddScoped<IJwtUtils, JwtUtils>();
+builder.Services.AddTransient<IJwtUtils, JwtUtils>();
 
 var app = builder.Build();
 SeedData(app);
@@ -57,6 +57,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.UseMiddleware<JwtMiddleware>();
 

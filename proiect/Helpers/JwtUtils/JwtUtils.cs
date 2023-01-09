@@ -25,7 +25,8 @@ namespace proiect.Helpers.JwtUtils
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim("id", user.Id.ToString())
+                    new Claim("id", user.Id.ToString()),
+                    new Claim("role", user.RoleName.ToString())
                 }
                     ),
                 Expires = DateTime.UtcNow.AddDays(5),
@@ -50,7 +51,7 @@ namespace proiect.Helpers.JwtUtils
             {
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(appPrivateKey),
-                ValidateIssuer = true,
+                ValidateIssuer = false,
                 ValidateAudience = false,
                 ClockSkew = TimeSpan.Zero
             };
