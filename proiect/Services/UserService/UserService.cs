@@ -1,6 +1,8 @@
-﻿using proiect.Helpers.JwtUtils;
+﻿using backend.Models.DTOs;
+using proiect.Helpers.JwtUtils;
 using proiect.Models;
 using proiect.Models.DTOs;
+using proiect.Models.Enums;
 using proiect.Repositories.DatabaseRepository;
 using BCryptNet = BCrypt.Net.BCrypt;
 
@@ -47,6 +49,11 @@ namespace proiect.Services.UserService
             _userRepository.Delete(user);
             await _userRepository.SaveAsync();
             return true;
+        }
+
+        public List<RoleCounterPairDTO> GetAllUsersGroupByRole()
+        {
+            return _userRepository.GetUsersGroupByUserRole();
         }
 
         public IEnumerable<User> GetEmployees()

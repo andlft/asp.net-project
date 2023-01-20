@@ -23,8 +23,4 @@
     <Folder Include="Helpers\Extensions\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\frontend\frontend.esproj" />
-  </ItemGroup>
-
 </Project>

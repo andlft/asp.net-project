@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using backend.Models.DTOs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using proiect.Helpers;
 using proiect.Models;
@@ -24,7 +25,7 @@ namespace proiect.Controllers
         }
 
 
-            [AuthorizationAttribute(Roles.Admin)]
+        [AuthorizationAttribute(Roles.Admin)]
         [HttpPost("createEmployee")]
         public async Task<ActionResult<Guid>> CreateEmployee(UserRequestDTO Employee)
         {
@@ -82,7 +83,7 @@ namespace proiect.Controllers
             Guid userId = await _userService.CreateUser(userToCreate);
             return Ok(userId);
         }
-        [AuthorizationAttribute(Roles.Employee, Roles.Admin)]
+//        [AuthorizationAttribute(Roles.Employee, Roles.Admin)]
         [HttpGet("GetUserInfo/{id}")]
         public ActionResult<UserResponseDTO> GetUserInfo(Guid id)
         {
@@ -103,6 +104,15 @@ namespace proiect.Controllers
                 FlatNo = user.Result.Address.FlatNo
             };
             return Ok(response);
+        }
+//        [AuthorizationAttribute(Roles.Admin)]
+        [HttpGet("GetUsersGroupByRole")]
+        public ActionResult<IEnumerable<RoleCounterPairDTO>> GetUsersGroupBy()
+        {
+            var result = _userService.GetAllUsersGroupByRole();
+            return result;
+
+            return Ok();
         }
         [AuthorizationAttribute(Roles.Admin)]
         [HttpGet("GetEmployees")]
