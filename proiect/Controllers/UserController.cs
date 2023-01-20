@@ -105,7 +105,7 @@ namespace proiect.Controllers
             };
             return Ok(response);
         }
-//        [AuthorizationAttribute(Roles.Admin)]
+        [AuthorizationAttribute(Roles.Admin)]
         [HttpGet("GetUsersGroupByRole")]
         public ActionResult<IEnumerable<RoleCounterPairDTO>> GetUsersGroupBy()
         {
