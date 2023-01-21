@@ -19,7 +19,7 @@ namespace proiect.Controllers
             _itemService = itemService;
         }
 
-        [AuthorizationAttribute(Roles.Admin, Roles.Employee)]
+//        [AuthorizationAttribute(Roles.Admin, Roles.Employee)]
         [HttpPost("create-item")]
         public async Task<ActionResult<Item>> CreateItem(ItemRequestDTO item)
         {
@@ -35,14 +35,14 @@ namespace proiect.Controllers
             return Ok(itemToCreate);
         }
 
-        [AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
+//        [AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
         [HttpGet("get-item/{itemId}")]
         public async Task<ActionResult<Item>> GetItem(Guid itemId)
         {
             return Ok(await _itemService.GetItemById(itemId));
         }
 
-        [AuthorizationAttribute(Roles.Admin, Roles.Employee)]
+//        [AuthorizationAttribute(Roles.Admin, Roles.Employee)]
         [HttpPut("update-item/{itemId}")]
         public async Task<ActionResult> UpdateItem(Guid itemId, [FromBody] ItemRequestDTO item)
         {
@@ -54,7 +54,7 @@ namespace proiect.Controllers
             return Ok();
         }
 
-        [AuthorizationAttribute(Roles.Admin, Roles.Employee)]
+//        [AuthorizationAttribute(Roles.Admin, Roles.Employee)]
         [HttpDelete("delete-item/{itemId}")]
         public async Task<ActionResult> DeleteItem (Guid itemId)
         {
