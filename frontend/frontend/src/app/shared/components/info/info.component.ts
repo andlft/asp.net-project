@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Item} from "../../../data/interfaces/item";
 import {ItemService} from "../../../core/services/item/item.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-info',
@@ -8,9 +9,10 @@ import {ItemService} from "../../../core/services/item/item.service";
   styleUrls: ['./info.component.css']
 })
 export class InfoComponent implements OnInit{
-  public itemFromApi: Item = {productName: "", description: "", price: 0, manufacturer: ""};
+  public itemFromApi: Item = {productName: "", description: "", price: 0, manufacturer: "",id: ""};
+  public itemsFromApi : Item [] = [];
 
-  constructor(private readonly itemService: ItemService) {
+  constructor(private readonly itemService: ItemService, private readonly router: Router) {
   }
 
   ngOnInit(): void {
@@ -24,11 +26,19 @@ export class InfoComponent implements OnInit{
       this.itemFromApi = data;
     });
 
+    this.itemService.getAllItems().subscribe(data => {
+      this.itemsFromApi = data;
+      console.log(data);
+      console.log(this.itemsFromApi)
+    });
+
     this.itemService.response.subscribe((data: any) => {
       console.log("response from BehaviorSubject", data);
       this.itemFromApi = data;
     });
 
   }
-
+  navigateToItem(id:string){
+    this.router.navigate((['/content', id]))
+  }
 }

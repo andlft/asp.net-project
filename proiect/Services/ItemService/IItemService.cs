@@ -10,6 +10,7 @@ namespace proiect.Services.ItemService
         Task DeleteItem(Guid ItemId);
         Task<bool> UpdateItem(Guid ItemId, ItemRequestDTO Request);
         Task<Item> GetItemById(Guid ItemId);    
+        Task<IEnumerable<Item>> GetAllItems();
         
     }
 }

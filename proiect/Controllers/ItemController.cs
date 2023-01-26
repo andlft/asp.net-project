@@ -41,8 +41,14 @@ namespace proiect.Controllers
         {
             return Ok(await _itemService.GetItemById(itemId));
         }
+        //        [AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
+        [HttpGet("getallitems")]
+        public async Task<ActionResult<Item>> GetAllItems()
+        {
+            return Ok(await _itemService.GetAllItems());
+        }
 
-//        [AuthorizationAttribute(Roles.Admin, Roles.Employee)]
+        //        [AuthorizationAttribute(Roles.Admin, Roles.Employee)]
         [HttpPut("update-item/{itemId}")]
         public async Task<ActionResult> UpdateItem(Guid itemId, [FromBody] ItemRequestDTO item)
         {

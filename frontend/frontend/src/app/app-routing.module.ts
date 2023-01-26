@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {MainComponent} from "./pages/main/main.component";
 import {InfoComponent} from "./shared/components/info/info.component";
 import {ContentComponent} from "./pages/content/content.component";
+import {ItemContentComponent} from "./pages/item-content/item-content.component";
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   },
   {
     path: "content/:id",
+    component: ItemContentComponent
+  },
+  {
+    path: "content",
     component: ContentComponent
   }
 ];

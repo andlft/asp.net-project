@@ -25,6 +25,11 @@ namespace proiect.Services.ItemService
             await _itemRepository.SaveAsync();
         }
 
+        public async Task<IEnumerable<Item>> GetAllItems()
+        {
+            return await _itemRepository.GetAll();
+        }
+
         public async Task<Item> GetItemById(Guid ItemId)
         {
             return await _itemRepository.FindByIdAsync(ItemId);

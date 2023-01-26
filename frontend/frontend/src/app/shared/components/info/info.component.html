@@ -1,4 +1,7 @@
 <mat-card>
-  <p> Component 3 with requests from service</p>
-  <p> Item from api is {{itemFromApi.productName}}</p>
+  <p (click)="navigateToItem(item.id)"  *ngFor ="let item of itemsFromApi">
+    Item name is {{item.productName}} <br/>
+
+  </p>
 </mat-card>
+<!--<p (click) = "navigateTo()">click</p>>-->

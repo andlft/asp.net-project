@@ -3,4 +3,5 @@ export interface Item {
   description: string;
   price: number;
   manufacturer: string;
+  id: string;
 }

@@ -11,15 +11,18 @@ export class ItemService {
   public response = this.responseSource.asObservable();
   constructor(private readonly  apiService: ApiService) { }
 
-  getItemWithQueryParams(Id = {}) {
+  getItemWithQueryParams(Id = "") {
     return this.apiService.get(this.route + '/get-item/' + Id);
   }
 
-  getItemWithQueryParamsFilter(Id = {}) {
+  getItemWithQueryParamsFilter(Id = "") {
     return this.apiService.get(this.route + '/get-item/' + Id).pipe(map(x => {
       console.log("data from api inside service", x);
       this.responseSource.next(x);
       return x;
     }));
+  }
+  getAllItems() {
+    return this.apiService.get(this.route+'/getallitems');
   }
 }

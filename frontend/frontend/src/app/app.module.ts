@@ -11,13 +11,15 @@ import {MainComponent} from "./pages/main/main.component";
 import {ContentComponent} from "./pages/content/content.component";
 import {InfoComponent} from "./shared/components/info/info.component";
 import {HttpClientModule} from "@angular/common/http";
+import { ItemContentComponent } from './pages/item-content/item-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     ContentComponent,
-    InfoComponent
+    InfoComponent,
+    ItemContentComponent
   ],
   imports: [
     BrowserModule,
