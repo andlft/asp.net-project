@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   createUser(createUserBody: any) : Observable<any> {
-    return this.apiService.post<any>(`${this.route}`, createUserBody);
+    return this.apiService.post<any>(`${this.route}/createCustomer`, createUserBody);
   }
 
   isLoggedIn(): boolean {

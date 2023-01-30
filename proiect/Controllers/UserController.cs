@@ -39,14 +39,14 @@ namespace proiect.Controllers
                 RoleName = Roles.Employee,
                 Address = new Address
                 {
-                    CountyName = Employee.Address.CountyName,
-                    CityName = Employee.Address.CityName,
-                    StreetName = Employee.Address.StreetName,
-                    StreetNo = Employee.Address.StreetNo,
-                    ZipCode = Employee.Address.ZipCode,
-                    BuildingName = Employee.Address.BuildingName,
-                    Floor = Employee.Address.Floor,
-                    FlatNo = Employee.Address.FlatNo,
+                    CountyName = Employee.CountyName,
+                    CityName = Employee.CityName,
+                    StreetName = Employee.StreetName,
+                    StreetNo = Employee.StreetNo,
+                    ZipCode = Employee.ZipCode,
+                    BuildingName = Employee.BuildingName,
+                    Floor = Employee.Floor,
+                    FlatNo = Employee.FlatNo,
                     DateCreated = DateTime.Now
                 },
                 DateCreated = DateTime.Now
@@ -68,14 +68,14 @@ namespace proiect.Controllers
                 RoleName = Roles.Admin,
                 Address = new Address
                 {
-                    CountyName = Admin.Address.CountyName,
-                    CityName = Admin.Address.CityName,
-                    StreetName = Admin.Address.StreetName,
-                    StreetNo = Admin.Address.StreetNo,
-                    ZipCode = Admin.Address.ZipCode,
-                    BuildingName = Admin.Address.BuildingName,
-                    Floor = Admin.Address.Floor,
-                    FlatNo = Admin.Address.FlatNo,
+                    CountyName = Admin.CountyName,
+                    CityName = Admin.CityName,
+                    StreetName = Admin.StreetName,
+                    StreetNo = Admin.StreetNo,
+                    ZipCode = Admin.ZipCode,
+                    BuildingName = Admin.BuildingName,
+                    Floor = Admin.Floor,
+                    FlatNo = Admin.FlatNo,
                     DateCreated = DateTime.Now
                 },
                 DateCreated = DateTime.Now

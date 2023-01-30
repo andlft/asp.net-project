@@ -1,0 +1,69 @@
+<mat-card>
+  <p>Register</p>
+  <form [formGroup] = "registerForm">
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName = "firstName">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName = "lastName">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName = "phoneNumber">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName = "email">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName = "password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>County Name</mat-label>
+      <input matInput formControlName = "countyName">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>City Name</mat-label>
+      <input matInput formControlName = "cityName">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>Street Name</mat-label>
+      <input matInput formControlName = "streetName">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>Zip Code</mat-label>
+      <input matInput formControlName = "zipCode">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>Building Name</mat-label>
+      <input matInput formControlName = "buildingName">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>Floor</mat-label>
+      <input matInput formControlName = "floor">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+      <mat-label>Apartment</mat-label>
+      <input matInput formControlName = "flatNo">
+    </mat-form-field>
+    <br/>
+  </form>
+  <button mat-raised-button (click) = "sendForm()">Submit</button>
+</mat-card>

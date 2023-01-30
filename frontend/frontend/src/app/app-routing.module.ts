@@ -7,8 +7,14 @@ import {ItemContentComponent} from "./pages/item-content/item-content.component"
 import {LoginComponent} from "./pages/login/login.component";
 import {AdminModule} from "./pages/admin/admin.module";
 import {AuthGuard} from "./core/guards/auth.guard";
+import {RegisterComponent} from "./pages/register/register.component";
 
 const routes: Routes = [
+  {
+    path: "",
+    canActivate: [AuthGuard],
+    component: MainComponent
+  },
   {
     path: "main",
     canActivate: [AuthGuard],
@@ -32,6 +38,10 @@ const routes: Routes = [
     path: "admin",
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/admin/admin.module').then(m => AdminModule)
+  },
+  {
+    path: "register",
+    component: RegisterComponent
   }
 ];
 

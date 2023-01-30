@@ -33,14 +33,14 @@ namespace proiect.Controllers
                 RoleName = Roles.Customer,
                 Address = new Address
                 {
-                    CountyName = Customer.Address.CountyName,
-                    CityName = Customer.Address.CityName,
-                    StreetName = Customer.Address.StreetName,
-                    StreetNo = Customer.Address.StreetNo,
-                    ZipCode = Customer.Address.ZipCode,
-                    BuildingName = Customer.Address.BuildingName,
-                    Floor = Customer.Address.Floor,
-                    FlatNo = Customer.Address.FlatNo,
+                    CountyName = Customer.CountyName,
+                    CityName = Customer.CityName,
+                    StreetName = Customer.StreetName,
+                    StreetNo = Customer.StreetNo,
+                    ZipCode = Customer.ZipCode,
+                    BuildingName = Customer.BuildingName,
+                    Floor = Customer.Floor,
+                    FlatNo = Customer.FlatNo,
                     DateCreated = DateTime.Now
                 },
                 DateCreated = DateTime.Now
