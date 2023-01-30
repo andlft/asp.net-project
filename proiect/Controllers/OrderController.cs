@@ -27,7 +27,7 @@ namespace proiect.Controllers
 
         }
 
-        //[AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
+        [AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
         [HttpPost("create-order/{UserId}")]
         public async Task<ActionResult> CreateOrder(Guid UserId)
         {
@@ -41,7 +41,7 @@ namespace proiect.Controllers
 
             return Ok();
         }
-        //[AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
+        [AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
         [HttpPost("add-item-order/{OrderId}/{ItemId}")]
         public async Task<ActionResult> AddItemToOrder(Guid OrderId, Guid ItemId)
         {
@@ -54,26 +54,26 @@ namespace proiect.Controllers
             await _orderItemService.AddItemToOrder(orderItemToCreate);
             return Ok();
         }
-        //[AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
+        [AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
         [HttpDelete("delete-item-order")]
         public async Task<ActionResult> DeleteItemFromOrder([FromBody] Guid OrderItemId)
         {
             await _orderItemService.DeleteItemFromOrder(OrderItemId);
             return Ok();
         }
-        //[AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
+        [AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
         [HttpGet("get-order-items/{OrderId}")]
         public async Task<ActionResult<List<Tuple<Order, OrderItem, Item>>>> GetOrderItems (Guid OrderId)
         {
             return Ok(await _orderItemService.GetOrderItems(OrderId));
         }
-        //[AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
+        [AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
         [HttpGet("get-orders/{UserId}")]
         public async Task<ActionResult<List<Order>>> GetUserOrders (Guid UserId)
         {
             return Ok(_orderService.GetAllFromUser(UserId));
         }
-        //[AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
+        [AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
         [HttpGet("get-order/{OrderId}")]
         public async Task<ActionResult<Order>> GetOrderById (Guid OrderId)
         {
@@ -81,7 +81,7 @@ namespace proiect.Controllers
             return Ok(order);
         }
 
-        //[AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
+        [AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
         [HttpPut("update-order/{OrderId}")]
         public async Task<ActionResult<Order>> UpdateOrder(Guid OrderId, OrderRequestDTO order)
         {
@@ -98,7 +98,7 @@ namespace proiect.Controllers
             return Ok(newOrder);
         }
 
-        //[AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
+        [AuthorizationAttribute(Roles.Customer, Roles.Admin, Roles.Employee)]
         [HttpDelete("delete-order/{OrderId}")]
         public async Task<ActionResult> DeleteOrder(Guid OrderId)
         {

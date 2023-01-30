@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MainComponent} from "./pages/main/main.component";
 import {ContentComponent} from "./pages/content/content.component";
 import { ItemContentComponent } from './pages/item-content/item-content.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './pages/login/login.component';
 
 //Modules
 import {ComponentsModule} from "./shared/components/components.module";
@@ -29,7 +29,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     MainComponent,
     ContentComponent,
     ItemContentComponent,
-    RegisterComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
