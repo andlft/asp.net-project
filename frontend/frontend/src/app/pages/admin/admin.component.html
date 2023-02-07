@@ -1,5 +1,12 @@
 <mat-card>
-  <p> Main Admin Component</p>
-  <router-outlet></router-outlet>
+  <p> Lista cu angajatii firmei</p>
+  <p mat-stroked-button
+     *ngFor ="let employee of employeesFromApi">
+    <mat-divider></mat-divider>
+    Id: {{employee.id}} <br/>
+    Prenume : {{employee.firstName}}<br/>
+    Nume : {{employee.lastName}}<br/>
+
+  </p>
 </mat-card>
 

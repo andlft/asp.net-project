@@ -11,6 +11,7 @@ import {AdminRoutingModule} from "./admin-routing.module";
 import { MatCardModule} from "@angular/material/card";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthInterceptor} from "../../core/interceptors/auth.interceptor";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {AuthInterceptor} from "../../core/interceptors/auth.interceptor";
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
@@ -31,3 +33,5 @@ import {AuthInterceptor} from "../../core/interceptors/auth.interceptor";
   }]
 })
 export class AdminModule { }
+
+

@@ -1,7 +1,9 @@
 <mat-card>
-  <p (click)="navigateToItem(item.id)"  *ngFor ="let item of itemsFromApi">
-    Item name is {{item.productName}} <br/>
 
-  </p>
+  <button mat-stroked-button color="primary"(click)="navigateToItem(item.id)"  *ngFor ="let item of itemsFromApi">
+    Produs: {{item.productName}} <br/>
+    Pret : {{item.price}}<br/>
+
+  </button>
 </mat-card>
 <!--<p (click) = "navigateTo()">click</p>>-->
